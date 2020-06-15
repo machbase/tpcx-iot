@@ -1,0 +1,91 @@
+IoT Benchmark Suite
+========================
+This suite has two parts
+  a) Cluster Validation 
+  b) IoT Benchmark TPCx-IoT benchmark based on YCSB workloads.
+
+Pre-Requisites
+==============
+a) Cluster of Nodes Running No SQL database which is installed as per distribution requirements
+b) Cluster shell such as "clush" or "pdsh" on the admin or client node from where this Benchmark  would be run. 
+This is needed for the Cluster Validation utility running  with the Benchmark Suite and also for using multiple clients for loading the database.
+
+===========================
+
+Where to run the benchmark
+---------------------------
+The benchmark has to be run from any client node which also supports clush (clustershell) 
+to all the client nodes. 
+
+Setup
+------
+Update number of clients in Benchmark_Parameters.sh 
+Update the client hostnames in client_host_list.txt, if only one host is being used use the one hostname in the client_host_list.txt
+Update the userid running the job in USER appropriately 
+Update the Benchmark_macros.sh to use the correct commands for the Database that has been chosen. (Right now has HBase commands)
+
+Copy the kit over to all the clients that will be used to run the benchmark at the same location.
+
+
+How to run the benchmark
+-------------------------
+#./TPCx-IoT-master.sh
+
+
+
+Clush Installation
+===================
+
+Clush can be installed from EPEL. It is not part of Linux distribution.
+Through yum, you can install clush (clustershell) as follows. Please install this on the admin node from 
+which the tests will be run and which can access all nodes in the cluster
+
+a) yum-config-manager --add-repo http://dl.fedoraproject.org/pub/epel/6/x86_64/ 
+(or yum-config-manager --add-repo http://209.132.181.25/pub/epel/6/x86_64/ incase DNS is not set)
+b) yum --nogpgcheck install clustershell -y
+c)Include all the nodes in the cluster (e.g. if cluster nodes are rhel1 to rhel16 and rhel18 and rhel21)
+echo "all: rhel[1-16,18,21]" > /etc/clustershell/groups
+
+Clush Usage: We have setup "clush"
+
+Usage: clush <options> <shell-commands to run on nodes parallely>
+Options:
+-a: all nodes (rhel1-rhel16)
+-w: specified nodes (-w rhel2 or -w rhel[3-7,9,11-12])
+-b: Aggregate results while displaying (example below)
+-c: copy files
+
+[root@jumphost Microbench]# clush -a pwd  # Clush command
+rhel2: /root
+rhel1: /root
+rhel4: /root
+rhel3: /root
+rhel8: /root
+rhel7: /root
+rhel6: /root
+rhel9: /root
+rhel5: /root
+rhel13: /root
+rhel12: /root
+rhel11: /root
+rhel10: /root
+rhel16: /root
+rhel15: /root
+rhel14: /root
+
+[root@jumphost Microbench]# clush -a -b  pwd  # -b aggregate results/errors and show result condensed
+---------------
+rhel[1-16] (16)
+---------------
+/root
+
+clush –a –c <filename> --dest=</root/>   # Clush Copy
+
+
+Troubleshooting
+===============
+
+1.Error running the script (ClassNotFoundException)
+—————————————————————————
+This is primarily caused due to different Java Versions used by Jar and the java running on the hadoop nodes.
+In the zip file jars compiled, one for  Java 1.7. 
