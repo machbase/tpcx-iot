@@ -20,7 +20,7 @@ LICENSE file.
 
   <parent>
     <groupId>com.yahoo.ycsb</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>root-machbase-binding</artifactId>
     <version>0.13.0</version>
   </parent>
 

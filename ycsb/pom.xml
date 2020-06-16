@@ -20,14 +20,13 @@ LICENSE file.
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.yahoo.ycsb</groupId>
-  <artifactId>root</artifactId>
+  <artifactId>root-machbase-binding</artifactId>
   <version>0.13.0</version>
+  <name>YCSB-Machbase-binding</name>
   <packaging>pom</packaging>
 
-  <name>YCSB Root</name>
-
   <description>
-    This is the top level project that builds, packages the core and all the DB bindings for YCSB infrastructure.
+    Yahoo! Cloud Serving Benchmark using MACHBASE.
   </description>
 
   <repositories>
@@ -39,10 +38,16 @@ LICENSE file.
   </repositories>
 
   <scm>
-    <connection>scm:git:git://github.com/brianfrankcooper/YCSB.git</connection>
-    <tag>master</tag>
-    <url>https://github.com/brianfrankcooper/YCSB</url>
+    <url>https://github.com/MACHBASE/tpcx-iot</url>
   </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>machbase-binding</id>
+      <url>https://api.bintray.com/maven/machbase/machbase/machbase-binding/;publish=1</url>
+    </repository>
+  </distributionManagement>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -112,6 +117,10 @@ LICENSE file.
     <arangodb3.version>4.1.7</arangodb3.version>
     <azurestorage.version>4.0.0</azurestorage.version>
     <cloudspanner.version>0.21.1-beta</cloudspanner.version>
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <bintray.repo>machbase/machbase</bintray.repo>
+    <bintray.package>machbase-binding</bintray.package>
   </properties>
 
   <modules>
@@ -218,6 +227,54 @@ LICENSE file.
             <configuration>
               <configLocation>checkstyle.xml</configLocation>
             </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- GPG sign -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
