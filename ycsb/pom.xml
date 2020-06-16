@@ -19,7 +19,7 @@ LICENSE file.
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.yahoo.ycsb</groupId>
+  <groupId>com.machbase.ycsb</groupId>
   <artifactId>root-machbase-binding</artifactId>
   <version>0.13.0</version>
   <name>YCSB-Machbase-binding</name>
@@ -124,54 +124,10 @@ LICENSE file.
   </properties>
 
   <modules>
-    <!-- our internals -->
     <module>core</module>
     <module>binding-parent</module>
     <module>distribution</module>
-    <!-- all the datastore bindings, lex sorted please -->
-    <!--
-    <module>accumulo</module>
-    <module>aerospike</module>
-    <module>arangodb</module>
-    <module>arangodb3</module>
-    <module>asynchbase</module>
-    <module>azuredocumentdb</module>
-    <module>azuretablestorage</module>
-    <module>cassandra</module>
-    <module>cloudspanner</module>
-    <module>couchbase</module>
-    <module>couchbase2</module>
-    <module>dynamodb</module>
-    <module>elasticsearch</module>
-    <module>elasticsearch5</module>
-    <module>geode</module>
-    <module>googlebigtable</module>
-    <module>googledatastore</module>
-    <module>hbase094</module>
-    <module>hbase098</module>
-    <module>hbase10</module>
-    <module>hbase12</module>
-    <module>hypertable</module>
-    <module>infinispan</module>
-    <module>jdbc</module>
-    <module>kudu</module>
-     -->
     <module>machbase</module>
-    <!--<module>mapkeeper</module>-->
-     <!--
-    <module>memcached</module>
-    <module>mongodb</module>
-    <module>nosqldb</module>
-    <module>orientdb</module>
-    <module>rados</module>
-    <module>redis</module>
-    <module>rest</module>
-    <module>riak</module>
-    <module>s3</module>
-    <module>solr</module>
-    <module>solr6</module>
-    <module>tarantool</module>-->
-    <!--<module>voldemort</module>-->
   </modules>
 
   <build>

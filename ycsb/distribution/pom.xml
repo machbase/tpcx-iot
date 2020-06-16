@@ -19,7 +19,7 @@ LICENSE file.
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.yahoo.ycsb</groupId>
+    <groupId>com.machbase.ycsb</groupId>
     <artifactId>root-machbase-binding</artifactId>
     <version>0.13.0</version>
   </parent>
@@ -35,7 +35,7 @@ LICENSE file.
   </description>
   <dependencies>
     <dependency>
-      <groupId>com.yahoo.ycsb</groupId>
+      <groupId>com.machbase.ycsb</groupId>
       <artifactId>core</artifactId>
       <version>${project.version}</version>
     </dependency>
@@ -166,7 +166,7 @@ LICENSE file.
       <version>${project.version}</version>
     </dependency>-->
     <dependency>
-      <groupId>com.yahoo.ycsb</groupId>
+      <groupId>com.machbase.ycsb</groupId>
       <artifactId>machbase-binding</artifactId>
       <version>${project.version}</version>
     </dependency>
