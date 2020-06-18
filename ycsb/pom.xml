@@ -62,16 +62,10 @@ LICENSE file.
       <id>ossrh</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
     </snapshotRepository>
-    <repositories>
-      <repository>
-        <id>tpcx-iot</id>
-        <url>https://api.bintray.com/maven/machbase/machbase/tpcx-iot/;publish=1</url>
-      </repository>
-      <repository>
-        <id>ossrh</id>
-        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-      </repository>
-    </repositories>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
   </distributionManagement>
 
   <dependencyManagement>
