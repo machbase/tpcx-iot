@@ -20,7 +20,7 @@ LICENSE file.
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.machbase.ycsb</groupId>
-  <artifactId>root-machbase-binding</artifactId>
+  <artifactId>root</artifactId>
   <version>0.13.0</version>
   <name>YCSB-Machbase-binding</name>
   <packaging>pom</packaging>
@@ -28,6 +28,22 @@ LICENSE file.
   <description>
     Yahoo! Cloud Serving Benchmark using MACHBASE.
   </description>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Noah SeongYeol Bae</name>
+      <email>noah.bae@machbase.com</email>
+      <organization>Machbase</organization>
+      <organizationUrl>https://www.machbase.com</organizationUrl>
+    </developer>
+  </developers>
 
   <repositories>
     <repository>
@@ -42,10 +58,20 @@ LICENSE file.
   </scm>
 
   <distributionManagement>
-    <repository>
-      <id>machbase-binding</id>
-      <url>https://api.bintray.com/maven/machbase/machbase/machbase-binding/;publish=1</url>
-    </repository>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+    <repositories>
+      <repository>
+        <id>tpcx-iot</id>
+        <url>https://api.bintray.com/maven/machbase/machbase/tpcx-iot/;publish=1</url>
+      </repository>
+      <repository>
+        <id>ossrh</id>
+        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      </repository>
+    </repositories>
   </distributionManagement>
 
   <dependencyManagement>
@@ -120,7 +146,7 @@ LICENSE file.
     <java.version>1.8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <bintray.repo>machbase/machbase</bintray.repo>
-    <bintray.package>machbase-binding</bintray.package>
+    <bintray.package>tpcx-iot</bintray.package>
   </properties>
 
   <modules>
@@ -218,7 +244,18 @@ LICENSE file.
           </execution>
         </executions>
       </plugin>
-
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
+      
       <!-- GPG sign -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

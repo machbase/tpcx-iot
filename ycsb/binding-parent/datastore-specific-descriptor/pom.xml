@@ -20,7 +20,7 @@ LICENSE file.
 
   <parent>
     <groupId>com.machbase.ycsb</groupId>
-    <artifactId>root-machbase-binding</artifactId>
+    <artifactId>root</artifactId>
     <version>0.13.0</version>
     <relativePath>../../</relativePath>
   </parent>
@@ -40,5 +40,26 @@ LICENSE file.
       <version>${project.version}</version>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>empty-javadoc-jar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <classifier>javadoc</classifier>
+              <classesDirectory>${basedir}/javadoc</classesDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
 

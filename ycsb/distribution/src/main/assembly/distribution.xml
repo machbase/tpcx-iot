@@ -77,7 +77,7 @@ LICENSE file.
         <exclude>com.machbase.ycsb:binding-parent</exclude>
         <exclude>com.machbase.ycsb:datastore-specific-descriptor</exclude>
         <exclude>com.machbase.ycsb:ycsb</exclude>
-        <exclude>com.machbase.ycsb:root-machbase-binding</exclude>
+        <exclude>com.machbase.ycsb:root</exclude>
       </excludes>
       <sources>
         <fileSets>
